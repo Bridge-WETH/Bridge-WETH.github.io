@@ -1,0 +1,107 @@
+{
+ "keyword": "bridge weth",
+ "h1": "Bridge WETH",
+ "brand": "Across",
+ "niche": "bridge",
+ "verb": "Bridge",
+ "title": "Bridge WETH - Open Across App",
+ "meta_description": "bridge weth through Across to move wrapped ether between supported Ethereum networks. Open the app, verify token details, and sign from your wallet.",
+ "palette": {
+  "mode": "dark",
+  "bg": "#2B2D31",
+  "accent": "#64F4D2",
+  "ink": "#F7FFFC"
+ },
+ "hero_h2": "Move wrapped ether across supported chains",
+ "hero_lead": "bridge weth with Across to move WETH between supported Ethereum and L2 networks from a wallet-first app, checking the route, token contract, and gas asset before you sign.",
+ "badge": "WETH Bridge",
+ "widget": {
+  "from": "WETH",
+  "from_net": "Ethereum",
+  "to": "WETH",
+  "to_net": "Arbitrum",
+  "action": "Open Across App"
+ },
+ "trust": [
+  "Official Across domain",
+  "ERC-20 WETH",
+  "Wallet-signed transfers"
+ ],
+ "what_is": "Across is a cross-chain transfer app for moving tokens between supported networks; WETH is wrapped ether, an ERC-20 representation of ETH explained by <a href=\"https://ethereum.org/wrapped-eth/\">ethereum.org</a>. Use this page as a clean route into the official Across app, then verify the network pair and token before signing.",
+ "how": [
+  {
+   "t": "Open Across",
+   "d": "Use the official app link and confirm the domain before connecting a wallet."
+  },
+  {
+   "t": "Connect wallet",
+   "d": "Choose the wallet that holds WETH on the source network and switch networks only through trusted wallet prompts."
+  },
+  {
+   "t": "Select route",
+   "d": "Pick WETH, the origin chain, and the destination chain, then check that the app supports the route."
+  },
+  {
+   "t": "Review and sign",
+   "d": "Read the quote, approval, destination address, and gas asset before submitting any transaction."
+  }
+ ],
+ "points": [
+  {
+   "h": "App-first flow",
+   "p": "The primary action is the official Across transfer interface; this page keeps context short and sends users to the app."
+  },
+  {
+   "h": "Token checks matter",
+   "p": "Before moving assets, compare WETH symbols and contract addresses with the canonical mainnet listing on <a href=\"https://etherscan.io/token/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2\">Etherscan</a> and the destination network explorer."
+  },
+  {
+   "h": "Bridge risk is real",
+   "p": "Blockchain bridges carry smart contract and operational risk; <a href=\"https://ethereum.org/bridges/\">ethereum.org</a> outlines common bridge trade-offs before you move funds."
+  }
+ ],
+ "eeat": [
+  {
+   "text": "Across documentation",
+   "url": "https://docs.across.to/"
+  },
+  {
+   "text": "ethereum.org WETH explainer",
+   "url": "https://ethereum.org/wrapped-eth/"
+  },
+  {
+   "text": "Etherscan WETH contract",
+   "url": "https://etherscan.io/token/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+  }
+ ],
+ "faq": [
+  {
+   "q": "How do I bridge weth with fewer mistakes?",
+   "a": "Open the official Across app, confirm the domain is across.to, select WETH and the networks, then review the quote and wallet prompts before signing.",
+   "open": true
+  },
+  {
+   "q": "Is WETH the same as ETH when moving across networks?",
+   "a": "No. WETH is an ERC-20 representation of ETH; native ETH is still needed for gas on many EVM networks.",
+   "open": false
+  },
+  {
+   "q": "Which WETH contract should I check?",
+   "a": "For Ethereum mainnet, verify the canonical WETH contract on <a href=\"https://etherscan.io/token/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2\">Etherscan</a>; other networks may use different addresses.",
+   "open": false
+  },
+  {
+   "q": "Does Across show details before signing?",
+   "a": "The app presents route and transaction details before wallet approval; network gas and quoted amounts can change until submitted.",
+   "open": false
+  },
+  {
+   "q": "Can I send WETH to Arbitrum or Base?",
+   "a": "Across supports Ethereum, Arbitrum, Base, Optimism, and other networks in its app; choose only routes currently offered in the interface.",
+   "open": false
+  }
+ ],
+ "official_url": "https://across.to/",
+ "official_domain": "across.to",
+ "footer_note": "This page is not the official Across app; verify across.to before connecting a wallet. Educational information only, not financial advice."
+}
