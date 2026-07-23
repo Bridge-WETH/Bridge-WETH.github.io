@@ -1,0 +1,19 @@
+{
+  "name": "WETH Bridge",
+  "short_name": "WETH Bridge",
+  "description": "How WETH bridging works: routes, deposits, withdrawals, approvals, gas on both chains, fees, verification, and safety checks before you sign.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "lang": "en",
+  "background_color": "#f5f6f8",
+  "theme_color": "#f5f6f8",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,64 +1,31 @@
-# Bridge WETH
-> An independent, non-custodial informational dashboard for understanding how Wrapped Ether moves between blockchain networks.
+# WETH Bridge
 
-## What is Bridge WETH
-Bridging WETH means transferring the value represented by Wrapped Ether from one blockchain to another through a cross-chain protocol. WETH is an ERC-20 representation of ETH, normally issued by depositing ETH into a wrapper contract. A bridge does not move the original token object between chains; it locks, burns, swaps, unwraps, or otherwise accounts for WETH on the source chain and delivers an accepted representation on the destination. Alternatives include unwrapping WETH and bridging native ETH, using a cross-chain swap, or withdrawing through a centralized exchange. This dashboard provides information rather than operating or endorsing a bridge.
-
-## How it works
-1. Select the source chain, destination chain, WETH amount, recipient, and an available bridge route.
-2. Verify both chain IDs, the source WETH contract, destination asset, quoted fees, minimum received, and estimated completion time.
-3. Connect a self-custody wallet, approve the route contract to spend the specified WETH if required, then sign the source-chain transaction.
-4. The selected protocol may lock and mint, burn and release, unwrap and rewrap, or fill the transfer from destination liquidity while settling later.
-5. After verification or relay, the destination asset reaches the recipient; some canonical withdrawals require a later prove or finalize transaction.
+> WETH Bridge is about moving Wrapped Ether value between networks through a route that locks, burns, swaps, or fills it on destination.
 
 ## Key facts
-- WETH implements the ERC-20 token interface and conventionally uses 18 decimals.
-- Ethereum Mainnet is chain ID 1; its canonical WETH9 contract is `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`.
-- Common EVM destinations include OP Mainnet (10), Polygon PoS (137), Base (8453), and Arbitrum One (42161).
-- WETH contract addresses are chain-specific; matching names and symbols do not prove token identity.
-- Native ETH, not WETH, pays gas on Ethereum and common ETH-based rollups.
-- A non-custodial interface never receives wallet keys, although bridge contracts may escrow assets.
-- Security depends on the selected route’s contracts, upgrade controls, validators, relayers, proofs, and liquidity.
-- Liquidity routes often finish within minutes; canonical optimistic-rollup withdrawals can require a seven-day challenge period.
+- Route: source chain  destination chain
+- Deposit: typically minutes
+- Withdraw: may need proving/finalization
+- Gas: native asset on both chains
+- Custody: Non-custodial — your wallet signs
+- Verify: Use the official contracts; beware fake bridge sites
 
-## Common questions
-**Is bridging WETH safe?**  
-Safety is route-specific. Verify the domain, contracts, destination token, trust model, audits, and transaction preview before signing.
-
-**Who controls my funds?**  
-You retain wallet-key control, but approved contracts can transfer WETH and bridge contracts may hold it during settlement.
-
-**What fees will I pay?**  
-Costs can include source and destination gas, bridge or relayer fees, and liquidity or swap price impact.
-
-**How long does it take?**  
-Fast routes may complete in minutes; canonical withdrawals can take days and may require manual finalization.
-
-**Which chains and assets are supported?**  
-Availability depends on the selected provider and route. Confirm live support and both token contracts before every transfer.
-
-**How do I start?**  
-Fund the source wallet with WETH and its native gas token, choose a route, verify the quote, approve only the required amount, and confirm.
-
-**What are the main risks?**  
-Wrong networks or tokens, malicious approvals, bridge exploits, validator compromise, failed relays, insufficient liquidity, and destination gas shortages.
+## On this page
+- [What is WETH Bridge?](https://bridge-weth.github.io/#what)
+- [How bridging works](https://bridge-weth.github.io/#how)
+- [Depositing to the destination](https://bridge-weth.github.io/#deposit)
+- [Withdrawing back](https://bridge-weth.github.io/#withdraw)
+- [Time and fees](https://bridge-weth.github.io/#fees)
+- [Is WETH Bridge safe?](https://bridge-weth.github.io/#safety)
+- [Problems and fixes](https://bridge-weth.github.io/#troubleshoot)
+- [FAQ](https://bridge-weth.github.io/#faq)
 
 ## App
-- Dashboard: https://bridge-weth.github.io/
-- App: https://bridge-weth.github.io/dashboard/
+- [WETH Bridge dashboard](https://bridge-weth.github.io/)
+- [Open the app](https://bridge-weth.github.io/dashboard/)
 
-## Official resources
-Ethereum Wrapped Ether Guide: https://ethereum.org/wrapped-eth/
-Ethereum Blockchain Bridges Guide: https://ethereum.org/bridges/
-Ethereum Developer Bridge Documentation: https://ethereum.org/developers/docs/bridges/
-Canonical WETH Source Code: https://github.com/gnosis/canonical-weth
-Arbitrum Bridge: https://portal.arbitrum.io/bridge
-Optimism Standard Bridge Documentation: https://docs.optimism.io/app-developers/guides/bridging/standard-bridge
-Base Ecosystem Bridge Documentation: https://docs.base.org/base-chain/network-information/ecosystem-bridges
-
-## Data & references
-ERC-20 Standard: https://eips.ethereum.org/EIPS/eip-20
-Ethereum WETH Contract Explorer: https://etherscan.io/token/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
-L2BEAT Interoperability Risk Research: https://l2beat.com/interop/summary
-DefiLlama Bridge Data: https://defillama.com/bridges
-CoinGecko WETH Reference: https://www.coingecko.com/en/coins/weth
+## Sources
+- [ethereum.org](https://ethereum.org/wrapped-eth/)
+- [github.com](https://github.com/gnosis/canonical-weth)
+- [eth.blockscout.com](https://eth.blockscout.com/token/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2)
+- [coingecko.com](https://www.coingecko.com/en/coins/weth)
