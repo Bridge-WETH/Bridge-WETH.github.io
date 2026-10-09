@@ -1,102 +1,261 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WETH Bridge — Move Wrapped ETH Across Networks</title>
-<meta name="description" content="Use a WETH Bridge to move Wrapped Ether (WETH) between Ethereum and other networks. See the route, fee and time before you sign, and keep your own keys.">
-<link rel="canonical" href="https://bridge-weth.github.io/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="WETH Bridge">
-<meta property="og:url" content="https://bridge-weth.github.io/">
-<meta property="og:image" content="https://bridge-weth.github.io/og.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WETH Bridge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WETH Bridge — Move Wrapped ETH Across Networks</title>
+  <meta name="description" content="Use a WETH Bridge to move Wrapped Ether (WETH) between Ethereum and other networks. See the route, fee and time before you sign, and keep your own keys.">
+  <link rel="canonical" href="https://bridge-weth.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="WETH Bridge">
+  <meta property="og:description" content="Use a WETH Bridge to move Wrapped Ether (WETH) between Ethereum and other networks. See the route, fee and time before you sign, and keep your own keys.">
+  <meta property="og:url" content="https://bridge-weth.github.io/">
+  <meta property="og:image" content="https://bridge-weth.github.io/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WETH Bridge">
+  <meta name="twitter:description" content="Use a WETH Bridge to move Wrapped Ether (WETH) between Ethereum and other networks. See the route, fee and time before you sign, and keep your own keys.">
+  <meta name="twitter:image" content="https://bridge-weth.github.io/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://bridge-weth.github.io/#website", "url": "https://bridge-weth.github.io/", "name": "WETH Bridge — Move Wrapped ETH Across Networks"}, {"@type": "WebPage", "@id": "https://bridge-weth.github.io/#webpage", "url": "https://bridge-weth.github.io/", "name": "WETH Bridge — Move Wrapped ETH Across Networks", "isPartOf": {"@id": "https://bridge-weth.github.io/#website"}, "description": "Use a WETH Bridge to move Wrapped Ether (WETH) between Ethereum and other networks. See the route, fee and time before you sign, and keep your own keys.", "datePublished": "2026-10-09", "dateModified": "2026-10-09"}, {"@type": "SoftwareApplication", "name": "WETH Bridge", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bridge-weth.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Bridges"}, {"@type": "ListItem", "position": 3, "name": "WETH Bridge"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is WETH?", "acceptedAnswer": {"@type": "Answer", "text": "WETH is Wrapped Ether, the ERC-20 form of ETH that contracts can handle like any token. It is backed one-to-one by ETH and reversible."}}, {"@type": "Question", "name": "Do I need ETH to use a WETH Bridge?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You pay gas in ETH to wrap, bridge or unwrap, and you need a little native gas on the destination chain."}}, {"@type": "Question", "name": "Can I turn WETH back into ETH?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Unwrapping converts WETH back to native ETH one-to-one on the same chain, for only a gas fee."}}, {"@type": "Question", "name": "Do I need an account?", "acceptedAnswer": {"@type": "Answer", "text": "No. You connect a self-custody wallet and act on-chain, with no sign-up and no custody."}}, {"@type": "Question", "name": "What happens if my transfer fails?", "acceptedAnswer": {"@type": "Answer", "text": "A failed transaction reverts and you keep your assets, though the gas for the attempt is spent."}}]}]}</script>
-<style>
-:root{--bg:#0B0D12;--surface:#12151C;--text:#EAEEF4;--muted:#8A93A3;--accent:#627EEA;--accent-ink:#FFFFFF;--radius:14px;--display:"Sora";--body:"Inter"}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font:16px/1.65 var(--body),system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-.c630718{max-width:1040px;margin:0 auto;padding:0 20px}
-a{color:inherit;text-decoration:none}
-.ca3c709{border:0;border-top:1px solid color-mix(in srgb,var(--text) 10%,transparent);margin:0}
-.ce0984c{display:flex;align-items:center;justify-content:space-between;height:68px}
-.cb52d78{font:700 18px var(--display),sans-serif}
-.ce8d133{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--accent-ink);font:600 15px var(--body),sans-serif;border:0;border-radius:calc(var(--radius) * .7);padding:12px 22px;cursor:pointer}
-.ce8d133.c42b6a6{background:transparent;color:var(--text);border:1px solid color-mix(in srgb,var(--text) 18%,transparent)}
-.ceba251{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:13px;padding:18px 0 6px;flex-wrap:wrap}
-.ceba251 a:hover{color:var(--text)}
-.c4a3aa3{padding:26px 0 30px}
-.c461ca9{display:inline-block;font:600 12px var(--body),sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-h1{font:700 clamp(34px,5vw,56px)/1.05 var(--display),sans-serif;letter-spacing:-.03em;max-width:16ch}
-h1 em{font-style:normal;color:var(--accent)}
-.c135663{color:var(--muted);font-size:clamp(17px,1.7vw,20px);margin:18px 0 24px;max-width:60ch}
-.cb0aae6{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.c263504{display:flex;gap:10px;align-items:center;margin-top:22px;color:var(--muted);font-size:14px}
-.c263504 img{vertical-align:middle}
-/* таблица фактов */
-.c5fce5d{width:100%;border-collapse:collapse;margin:8px 0 8px;background:var(--surface);border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:var(--radius);overflow:hidden}
-.c5fce5d th,.c5fce5d td{text-align:left;padding:13px 18px;font-size:15px;border-top:1px solid color-mix(in srgb,var(--text) 8%,transparent)}
-.c5fce5d tr:first-child th,.c5fce5d tr:first-child td{border-top:0}
-.c5fce5d th{color:var(--muted);font-weight:600;width:42%}
-.c2857d7{padding:6px 0 10px}
-.c2857d7 h2{font:600 13px var(--body),sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-/* контент */
-.cc234e3{padding:18px 0 10px;max-width:760px}
-.c7022e9{padding:24px 0;border-top:1px solid color-mix(in srgb,var(--text) 9%,transparent)}
-.c0359fd{font:700 clamp(21px,2.4vw,28px) var(--display),sans-serif;letter-spacing:-.02em;margin-bottom:10px}
-.c02b292{color:var(--muted)}
-.c02b292 strong{color:var(--text)}
-.c507262{border-top:1px solid color-mix(in srgb,var(--text) 9%,transparent);padding:4px 0}
-.c79c805{font:600 17px var(--display),sans-serif;cursor:pointer;padding:15px 0;list-style:none}
-.c294fc7{color:var(--muted);padding:0 0 15px}
-.c9dc452{padding:22px 0}
-.c9dc452 h2{font:600 13px var(--body),sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-.ca1d03c{list-style:none;display:flex;flex-direction:column;gap:7px}
-.c5ef480{color:var(--accent)}.c5ef480:hover{text-decoration:underline}
-footer{border-top:1px solid color-mix(in srgb,var(--text) 9%,transparent);padding:26px 0;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-</style>
+  <style>
+    :root{--bg:#0B0D12;--surface:#12151C;--text:#EAEEF4;--muted:#8A93A3;--accent:#627EEA;--accent-ink:#FFFFFF;--radius:14px;--display:"Sora";--body:"Inter"}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 400 1rem/1.7 var(--body); -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-underline-offset: .22em; }
+    a:hover { text-decoration-thickness: .12em; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+    ::selection { background: var(--accent); color: var(--accent-ink); }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--display); line-height: 1.15; text-wrap: balance; }
+    p, h1, h2, h3 { margin-top: 0; }
+    img, svg { max-width: 100%; vertical-align: middle; }
+    .c9d20ac { width: min(1180px, calc(100% - 3rem)); margin-inline: auto; }
+    .cb24c6a { position: absolute; z-index: 5; top: .5rem; left: 1rem; padding: .7rem 1rem; background: var(--surface); transform: translateY(-180%); border-radius: var(--radius); }
+    .cb24c6a:focus { transform: translateY(0); }
+    .c834949 { border-bottom: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
+    .ce0984c { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .cb52d78 { display: inline-flex; align-items: center; gap: .7rem; color: var(--text); font: 650 1.12rem/1.2 var(--display); text-decoration: none; }
+    .ca744e8 { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: calc(var(--radius) * .6); background: var(--accent); color: var(--accent-ink); }
+    .c7f69b7 { width: 1.2rem; height: 1.2rem; fill: none; stroke: var(--accent-ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
+    .c4fba38 { display: flex; align-items: center; gap: 1.8rem; }
+    .c4fba38 > a { font-size: .88rem; font-weight: 600; text-decoration: none; }
+    .c4fba38 > a:not(.cb0aae6) { color: var(--muted); }
+    .cb0aae6 { display: inline-flex; align-items: center; justify-content: center; gap: .8rem; min-height: 52px; padding: .85rem 1.4rem; border: 1px solid color-mix(in srgb,var(--accent-ink) 12%,transparent); border-radius: var(--radius); background: linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 88%,var(--text))); color: var(--accent-ink); font: 650 .95rem/1.3 var(--body); text-decoration: none; box-shadow: 0 6px 18px color-mix(in srgb,var(--accent) 17%,transparent); transition: transform .18s ease, box-shadow .18s ease; }
+    .cb0aae6:hover { transform: translateY(-2px); box-shadow: 0 9px 24px color-mix(in srgb,var(--accent) 25%,transparent); }
+    .ce0984c .cb0aae6 { min-height: 42px; padding: .65rem 1rem; }
+    .c5e64db { padding-block: 1.8rem 0; color: var(--muted); font-size: .8rem; overflow-wrap: anywhere; }
+    .ceba251 { color: var(--muted); }
+    .ceba251 a, a.ceba251 { color: var(--muted); text-decoration: none; }
+    .ceba251 a:hover, a.ceba251:hover { color: var(--accent); text-decoration: underline; }
+    .ceba251 ol, .ceba251 ul { display: flex; flex-wrap: wrap; gap: .5rem 1rem; padding: 0; margin: 0; list-style: none; }
+    .c4a3aa3 { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: clamp(2rem,6vw,5.5rem); align-items: center; padding-block: 3rem 5.5rem; }
+    .c461ca9 { display: inline-flex; align-items: center; gap: .55rem; margin-bottom: 1.3rem; color: var(--accent); font-size: .86rem; font-weight: 600; }
+    .c461ca9::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb,var(--accent) 9%,transparent); }
+    h1 { margin-bottom: 1.4rem; font-size: clamp(2.5rem,4.7vw,4.35rem); font-weight: 600; letter-spacing: -.055em; overflow-wrap: anywhere; }
+    h1 em { color: var(--accent); font-style: normal; }
+    .c135663 { max-width: 48ch; margin-bottom: 2rem; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
+    .c7674d2 { position: relative; min-width: 0; padding: clamp(1.25rem,3vw,2rem); border: 1px solid color-mix(in srgb,var(--accent) 20%,var(--surface)); border-radius: calc(var(--radius) * 1.6); background: linear-gradient(155deg,color-mix(in srgb,var(--accent) 7%,var(--surface)),var(--surface) 40%); box-shadow: 0 24px 64px color-mix(in srgb,var(--text) 9%,transparent),0 4px 12px color-mix(in srgb,var(--accent) 6%,transparent); }
+    .c62f6c7 { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem; margin-bottom: 1.6rem; }
+    .c62f6c7 h2 { margin: 0; font-size: 1.35rem; letter-spacing: -.035em; }
+    .c379b37 { display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .65rem; border: 1px solid color-mix(in srgb,var(--accent) 16%,transparent); border-radius: 999px; background: color-mix(in srgb,var(--accent) 8%,var(--surface)); color: var(--accent); font-size: .72rem; font-weight: 600; }
+    .c379b37::before { content: ""; width: .35rem; height: .35rem; border-radius: 50%; background: var(--accent); }
+    .c34e645 { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: .8rem; padding: 1rem; margin-bottom: 1.5rem; border: 1px solid color-mix(in srgb,var(--text) 9%,transparent); border-radius: var(--radius); background: var(--surface); }
+    .c24ca41 { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; }
+    .c24ca41:last-child { align-items: flex-end; }
+    .c293944, .c2c58db { color: var(--muted); font-size: .78rem; font-weight: 500; }
+    .c2e03c7 { display: flex; align-items: center; min-height: 36px; max-width: 100%; overflow-wrap: anywhere; font: 600 1rem/1.3 var(--display); }
+    .c2e03c7 img, .c2e03c7 svg { max-height: 36px; width: auto; max-width: 100%; object-fit: contain; }
+    .c952450 { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: color-mix(in srgb,var(--accent) 9%,var(--surface)); }
+    .c952450 .c7f69b7 { stroke: var(--accent); }
+    .c2c58db { display: block; margin-bottom: .5rem; color: var(--text); }
+    .c0315f5 { display: flex; align-items: center; gap: .75rem; padding: .8rem 1rem; border: 1px solid color-mix(in srgb,var(--text) 18%,transparent); border-radius: var(--radius); background: var(--bg); transition: border-color .18s ease; }
+    .c0315f5:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent); }
+    .c0315f5 input { width: 100%; min-width: 0; padding: .2rem 0; border: 0; background: var(--bg); color: var(--text); font: 550 1.9rem/1.2 var(--display); font-variant-numeric: tabular-nums; }
+    .c0315f5 input:focus { outline: 0; }
+    .c46c341 { color: var(--muted); font-size: .8rem; }
+    .c707b4a { margin: .55rem 0 1.3rem; color: var(--muted); font-size: .74rem; }
+    .ce3ef6a { margin: .5rem 0; color: var(--text); font-size: .8rem; font-weight: 600; }
+    [hidden] { display: none !important; }
+    .c2b2e26 { padding: 1.2rem; border-radius: var(--radius); background: linear-gradient(120deg,color-mix(in srgb,var(--accent) 12%,var(--surface)),color-mix(in srgb,var(--accent) 4%,var(--surface))); }
+    .cd719cd { margin-bottom: .25rem; color: var(--muted); font-size: .8rem; }
+    .c9dae36 { display: block; color: var(--text); font: 600 clamp(1.7rem,3vw,2.5rem)/1.3 var(--display); letter-spacing: -.04em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .c9dae36 small { color: var(--muted); font: 400 .8rem/1.4 var(--body); letter-spacing: 0; }
+    .c2b2e26 dl { display: grid; gap: .6rem; margin: 1rem 0 0; padding-top: 1rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .8rem; }
+    .c2b2e26 dl div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; }
+    .c2b2e26 dt { color: var(--muted); }
+    .c2b2e26 dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .cd86cb9 { margin-block: 1rem; color: var(--muted); font-size: .75rem; }
+    .cd86cb9 summary { width: fit-content; color: var(--text); cursor: pointer; }
+    .cd86cb9 p { margin: .65rem 0 0; }
+    .c7674d2 > .cb0aae6 { width: 100%; }
+    .c6d46b1 { padding: 2rem; border: 1px solid color-mix(in srgb,var(--text) 10%,transparent); border-radius: calc(var(--radius) * 1.3); background: var(--surface); }
+    .c1267ea { margin-bottom: 1.3rem; font-size: 1.65rem; font-weight: 550; letter-spacing: -.035em; }
+    .c56da4b { max-width: 100%; overflow-x: auto; }
+    .c5fce5d { width: 100%; border-collapse: collapse; text-align: left; font-size: .92rem; }
+    .c5fce5d caption { padding-bottom: 1rem; text-align: left; color: var(--muted); }
+    .c5fce5d th, .c5fce5d td { padding: 1rem 1.1rem; border-bottom: 1px solid color-mix(in srgb,var(--text) 9%,transparent); vertical-align: top; overflow-wrap: anywhere; }
+    .c5fce5d th { color: var(--muted); font-weight: 500; }
+    .c5fce5d thead { background: color-mix(in srgb,var(--accent) 5%,var(--surface)); }
+    .c5fce5d tbody tr:last-child > * { border-bottom: 0; }
+    .c176a59 { max-width: 820px; padding-block: 4rem 2rem; }
+    .c7022e9 { margin-bottom: 3.3rem; }
+    .c0359fd { margin: 0 0 1.1rem; font: 550 clamp(1.6rem,3vw,2.2rem)/1.2 var(--display); letter-spacing: -.035em; }
+    .c02b292 { color: var(--muted); line-height: 1.85; overflow-wrap: anywhere; }
+    .c02b292 p { margin-bottom: 1.2rem; }
+    .c02b292 strong, .c02b292 h3, .c02b292 h4 { color: var(--text); }
+    .c02b292 ul, .c02b292 ol { padding-left: 1.3rem; }
+    .c02b292 li { padding-left: .3rem; margin-block: .55rem; }
+    .c02b292 li::marker { color: var(--accent); }
+    .c02b292 blockquote { margin: 1.5rem 0; padding: 1rem 1.4rem; border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; background: var(--surface); color: var(--text); }
+    .c02b292 img { height: auto; border-radius: var(--radius); }
+    .c02b292 pre { overflow-x: auto; padding: 1rem; border-radius: var(--radius); background: var(--surface); }
+    .c02b292 code, .c02b292 pre { font-family: var(--body); }
+    .c507262 { margin-block: .8rem; border: 1px solid color-mix(in srgb,var(--text) 11%,transparent); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+    .c79c805 { position: relative; padding: 1.3rem 3.5rem 1.3rem 1.4rem; list-style: none; cursor: pointer; color: var(--text); font: 550 1.04rem/1.5 var(--display); }
+    .c79c805::-webkit-details-marker { display: none; }
+    .c79c805::after { content: "+"; position: absolute; right: 1.4rem; top: 1.2rem; color: var(--accent); font-size: 1.3rem; }
+    details[open] > .c79c805::after { content: "−"; }
+    .c507262[open] { border-color: color-mix(in srgb,var(--accent) 35%,var(--surface)); }
+    .c79c805:focus-visible { outline-offset: -5px; }
+    .c294fc7 { padding: 0 1.4rem 1.4rem; color: var(--muted); overflow-wrap: anywhere; }
+    .c294fc7 > :last-child { margin-bottom: 0; }
+    .c8064dc { max-width: 820px; padding-block: 1.5rem 3.5rem; border-top: 1px solid color-mix(in srgb,var(--text) 12%,transparent); }
+    .c8064dc .c1267ea { font-size: 1.25rem; }
+    .ca1d03c { margin: 0; padding-left: 1.25rem; color: var(--muted); font-size: .88rem; }
+    .c5ef480 { padding-block: .4rem; padding-left: .25rem; overflow-wrap: anywhere; }
+    .c5ef480 a, a.c5ef480 { color: var(--text); text-decoration-color: color-mix(in srgb,var(--accent) 45%,transparent); }
+    .c5ef480 a:hover, a.c5ef480:hover { color: var(--accent); }
+    .c30d31c { border-top: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
+    .c2890d8 { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; min-height: 96px; padding-block: 1.5rem; color: var(--muted); font-size: .8rem; }
+    .c2890d8 p { margin: 0; }
+    .c2890d8 a { color: var(--muted); }
+    @media (max-width: 850px) { .c4a3aa3 { grid-template-columns: minmax(0,1fr); gap: 2.5rem; padding-block: 2.5rem 3.5rem; } .c4f9861 { max-width: 650px; } .c7674d2 { width: 100%; max-width: 600px; justify-self: center; } h1 { font-size: clamp(2.5rem,7vw,4rem); } .c135663 { max-width: 60ch; } }
+    @media (max-width: 540px) { .c9d20ac { width: calc(100% - 2rem); } .ce0984c { min-height: 76px; gap: .7rem; } .cb52d78 { font-size: .95rem; gap: .45rem; } .ca744e8 { width: 2rem; height: 2rem; } .c4fba38 { gap: .6rem; } .c4fba38 > a:not(.cb0aae6) { display: none; } .ce0984c .cb0aae6 { padding-inline: .85rem; font-size: .8rem; } .c6d46b1 { padding: 1.25rem; } .c5fce5d th, .c5fce5d td { padding: .8rem .55rem; } .c4f9861 > .cb0aae6 { width: 100%; } .c176a59 { padding-top: 2.8rem; } .c2890d8 { align-items: flex-start; flex-direction: column; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .cb0aae6, .c0315f5 { transition: none; } .cb0aae6:hover { transform: none; } }
+  </style>
 </head>
 <body>
-<div class="c630718">
-  <nav class="ce0984c"><span class="cb52d78">WETH Bridge</span><a class="ce8d133" href="dashboard/">Open app</a></nav>
-</div>
-<hr class="ca3c709">
-<div class="c630718">
-  <nav class="ceba251" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Bridges</span> <span>/</span> <span>WETH Bridge</span></nav>
-  <header class="c4a3aa3">
-    <span class="c461ca9">On-chain · self-custody</span>
-    <h1>WETH <em>Bridge</em>.</h1>
-    <p class="c135663">A WETH Bridge moves Wrapped Ether — the ERC-20 form of ETH used by most DeFi contracts — between Ethereum and other networks. You review the route, the fee and the amount received before you sign, pay gas in ETH, and your funds stay in your own wallet the whole time.</p>
-    <div class="cb0aae6"><a class="ce8d133" href="dashboard/">Start now</a><a class="ce8d133 c42b6a6" href="#faq">Read the details</a></div>
-    <div class="c263504"><img src="assets/tokens/eth.svg" alt="Ethereum" width="28" height="28">  <span>Supported assets and networks</span></div>
+  <a class="cb24c6a" href="#content">Skip to content</a>
+  <header class="c834949">
+    <nav class="ce0984c c9d20ac" aria-label="Primary navigation">
+      <a class="cb52d78" href="#top" aria-label="Transfer guide, top of page">
+        <span class="ca744e8" aria-hidden="true"><svg class="c7f69b7" viewBox="0 0 24 24"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/></svg></span>
+        Transfer guide
+      </a>
+      <div class="c4fba38">
+        <a href="#facts">Key facts</a>
+        <a href="#sources">Sources</a>
+        <a class="cb0aae6" href="dashboard/">Open app</a>
+      </div>
+    </nav>
   </header>
-
-  <section class="c2857d7"><h2>Key facts</h2><table class="c5fce5d"><tbody><tr><th scope="row">Asset</th><td>WETH — ERC-20 form of ETH, 1:1</td></tr>
+  <div class="c9d20ac" id="top">
+    <div class="c5e64db"><nav class="ceba251" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Bridges</span> <span>/</span> <span>WETH Bridge</span></nav></div>
+    <section class="c4a3aa3" aria-labelledby="hero-title">
+      <div class="c4f9861">
+        <p class="c461ca9">Plan your transfer</p>
+        <h1 id="hero-title">WETH <em>Bridge</em>.</h1>
+        <p class="c135663">A WETH Bridge moves Wrapped Ether — the ERC-20 form of ETH used by most DeFi contracts — between Ethereum and other networks. You review the route, the fee and the amount received before you sign, pay gas in ETH, and your funds stay in your own wallet the whole time.</p>
+        <a class="cb0aae6" href="dashboard/">Open app <svg class="c7f69b7" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </div>
+      <aside class="c7674d2" aria-labelledby="widget-title">
+        <div class="c62f6c7">
+          <h2 id="widget-title">Transfer estimator</h2>
+          <span class="c379b37">Amount-based estimate</span>
+        </div>
+        <div class="c34e645" aria-label="Transfer route">
+          <div class="c24ca41"><span class="c293944">From</span><div class="c2e03c7"><img src="assets/tokens/eth.svg" alt="Ethereum" width="28" height="28"></div></div>
+          <span class="c952450" aria-hidden="true"><svg class="c7f69b7" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+          <div class="c24ca41"><span class="c293944">To</span><div class="c2e03c7"></div></div>
+        </div>
+        <label class="c2c58db" for="amount">Amount to send</label>
+        <div class="c0315f5">
+          <input id="amount" type="number" inputmode="decimal" min="0.01" max="1000000000000" step="0.01" value="1000" required aria-describedby="amount-help amount-error">
+          <span class="c46c341">units</span>
+        </div>
+        <p class="c707b4a" id="amount-help">Enter an amount to calculate fees and transfer time.</p>
+        <p class="ce3ef6a" id="amount-error" hidden></p>
+        <div class="c2b2e26" role="status" aria-live="polite" aria-atomic="true">
+          <div class="cd719cd">Estimated amount after fees</div>
+          <output class="c9dae36" id="result" for="amount">—</output>
+          <dl>
+            <div><dt>Estimated fee</dt><dd id="fee">—</dd></div>
+            <div><dt>Estimated time</dt><dd id="duration">—</dd></div>
+          </dl>
+        </div>
+        <details class="cd86cb9">
+          <summary>How the estimate is calculated</summary>
+          <p>Fee = 0.25 units + 0.3% of the amount, rounded to two decimal places and capped at the amount sent. The remaining amount uses the same units, at a 1:1 conversion. Time starts at 2 minutes, adds 1 minute per 2,500 units or part thereof, and is capped at 12 minutes. The displayed range adds 2 minutes to that estimate.</p>
+        </details>
+        <noscript><p class="c707b4a">Enable JavaScript to calculate the estimate.</p></noscript>
+        <a class="cb0aae6" href="dashboard/">Continue to dashboard <svg class="c7f69b7" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </aside>
+    </section>
+    <section class="c6d46b1" id="facts" aria-labelledby="facts-title">
+      <h2 class="c1267ea" id="facts-title">Key facts</h2>
+      <div class="c56da4b"><table class="c5fce5d"><tbody><tr><th scope="row">Asset</th><td>WETH — ERC-20 form of ETH, 1:1</td></tr>
 <tr><th scope="row">Direction</th><td>Ethereum ⇄ L2s and other chains</td></tr>
 <tr><th scope="row">Gas</th><td>Paid in ETH</td></tr>
 <tr><th scope="row">Use</th><td>DeFi contracts that require an ERC-20</td></tr>
-<tr><th scope="row">Custody</th><td>Self-custody — you hold your keys</td></tr></tbody></table></section>
-
-  <main class="cc234e3" id="faq">
+<tr><th scope="row">Custody</th><td>Self-custody — you hold your keys</td></tr></tbody></table></div>
+    </section>
+  </div>
+  <main class="c176a59 c9d20ac" id="content">
     <section class="c7022e9"><h2 class="c0359fd">How a WETH Bridge works</h2><div class="c02b292"><strong>WETH is ETH wrapped as an ERC-20 so contracts can handle it like any token.</strong> A WETH Bridge moves that token between chains: you choose the amount, review the route and the amount that will arrive, then sign. You can also wrap and unwrap one-to-one between ETH and WETH on the same chain at any time.</div></section>
 <section class="c7022e9"><h2 class="c0359fd">WETH Bridge fees and time</h2><div class="c02b292">The WETH Bridge costs the source-chain gas plus any protocol fee; wrapping or unwrapping on one chain is just a gas fee with no spread. Cross-chain transfers settle after source confirmations, usually minutes. The quote shows the amount received before you commit.</div></section>
-<section class="c7022e9"><h2 class="c0359fd">Why DeFi uses WETH instead of ETH</h2><div class="c02b292">Native ETH is not an ERC-20, so many contracts work with WETH to treat it like other tokens in pools, lending and swaps. Bridging WETH keeps that compatibility on the destination chain, where it can be unwrapped back to ETH when you need native gas.</div></section>
+<section class="c7022e9"><h2 class="c0359fd">WETH Bridge: why DeFi uses WETH, not ETH</h2><div class="c02b292">Native ETH is not an ERC-20, so many contracts work with WETH to treat it like other tokens in pools, lending and swaps. Bridging WETH keeps that compatibility on the destination chain, where it can be unwrapped back to ETH when you need native gas.</div></section>
 <section class="c7022e9"><h2 class="c0359fd">Is a WETH Bridge safe to use?</h2><div class="c02b292">A self-custody route keeps your keys in your wallet, and wrapping is a one-to-one, reversible operation. Confirm the destination token's contract address, the amount received and the approval you grant, prefer a limited approval, and treat any seed-phrase request as fraud.</div></section>
-<section class="c7022e9"><h2 class="c0359fd">Wrapping vs bridging WETH</h2><div class="c02b292">Wrapping converts ETH to WETH on the same chain one-to-one; bridging moves WETH to another chain. If you only need an ERC-20 locally, wrap; if you need it elsewhere, bridge. Judge any cross-chain route by the <strong>net amount received</strong> after gas and fees.</div></section>
+<section class="c7022e9"><h2 class="c0359fd">WETH Bridge vs wrapping on one chain</h2><div class="c02b292">Wrapping converts ETH to WETH on the same chain one-to-one; bridging moves WETH to another chain. If you only need an ERC-20 locally, wrap; if you need it elsewhere, bridge. Judge any cross-chain route by the <strong>net amount received</strong> after gas and fees.</div></section>
     <details class="c507262"><summary class="c79c805">What is WETH?</summary><div class="c294fc7">WETH is Wrapped Ether, the ERC-20 form of ETH that contracts can handle like any token. It is backed one-to-one by ETH and reversible.</div></details>
 <details class="c507262"><summary class="c79c805">Do I need ETH to use a WETH Bridge?</summary><div class="c294fc7">Yes. You pay gas in ETH to wrap, bridge or unwrap, and you need a little native gas on the destination chain.</div></details>
 <details class="c507262"><summary class="c79c805">Can I turn WETH back into ETH?</summary><div class="c294fc7">Yes. Unwrapping converts WETH back to native ETH one-to-one on the same chain, for only a gas fee.</div></details>
 <details class="c507262"><summary class="c79c805">Do I need an account?</summary><div class="c294fc7">No. You connect a self-custody wallet and act on-chain, with no sign-up and no custody.</div></details>
 <details class="c507262"><summary class="c79c805">What happens if my transfer fails?</summary><div class="c294fc7">A failed transaction reverts and you keep your assets, though the gas for the attempt is spent.</div></details>
   </main>
-
-  <section class="c9dc452"><h2>Sources</h2><ul class="ca1d03c"><li><a class="c5ef480" href="https://etherscan.io/token/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" rel="nofollow noopener" target="_blank">WETH contract on Etherscan</a></li>
+  <section class="c8064dc c9d20ac" id="sources" aria-labelledby="sources-title">
+    <h2 class="c1267ea" id="sources-title">Sources</h2>
+    <ul class="ca1d03c"><li><a class="c5ef480" href="https://etherscan.io/token/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" rel="nofollow noopener" target="_blank">WETH contract on Etherscan</a></li>
 <li><a class="c5ef480" href="https://en.wikipedia.org/wiki/Ethereum" rel="nofollow noopener" target="_blank">Ethereum on Wikipedia</a></li>
-<li><a class="c5ef480" href="https://ethereum.org/en/developers/docs/" rel="nofollow noopener" target="_blank">Ethereum developer docs</a></li></ul></section>
-</div>
-<hr class="ca3c709">
-<div class="c630718"><footer><span>Updated Oct 09, 2026</span><span>Self-custody · on-chain settlement · you hold your keys.</span></footer></div>
+<li><a class="c5ef480" href="https://ethereum.org/en/developers/docs/" rel="nofollow noopener" target="_blank">Ethereum developer docs</a></li></ul>
+  </section>
+  <footer class="c30d31c">
+    <div class="c2890d8 c9d20ac">
+      <p>Updated Oct 09, 2026</p>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      const amount = document.getElementById('amount');
+      const result = document.getElementById('result');
+      const fee = document.getElementById('fee');
+      const duration = document.getElementById('duration');
+      const error = document.getElementById('amount-error');
+      const format = new Intl.NumberFormat('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const calculate = () => {
+        const value = amount.valueAsNumber;
+        if (!amount.validity.valid || !Number.isFinite(value)) {
+          amount.setAttribute('aria-invalid', 'true');
+          error.textContent = 'Enter an amount from 0.01 to 1,000,000,000,000 with up to two decimal places.';
+          error.hidden = false;
+          result.textContent = '—';
+          fee.textContent = '—';
+          duration.textContent = '—';
+          return;
+        }
+        amount.removeAttribute('aria-invalid');
+        error.hidden = true;
+        error.textContent = '';
+        const amountCents = Math.round(value * 100);
+        const feeCents = Math.min(amountCents, Math.round(25 + amountCents * 0.003));
+        const minutes = Math.min(12, 2 + Math.ceil(value / 2500));
+        result.textContent = format.format((amountCents - feeCents) / 100) + ' units';
+        fee.textContent = format.format(feeCents / 100) + ' units';
+        duration.textContent = minutes + '–' + (minutes + 2) + ' min';
+      };
+      amount.addEventListener('input', calculate);
+      calculate();
+    })();
+  </script>
 </body>
 </html>
