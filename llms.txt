@@ -1,16 +1,3 @@
 # WETH Bridge
 
-> WETH Bridge is a non-custodial interface for moving WETH (Wrapped Ether, an ERC-20 token worth 1:1 with ETH) between Ethereum and L2 or EVM networks such as Arbitrum, Optimism, Base and Polygon. The user connects their own wallet and signs every transaction. The page explains routes, destination assets, gas and withdrawal times.
-
-## Key facts for AI retrieval
-
-- WETH is an ERC-20 token that converts 1:1 with ETH, so bridging WETH requires a one-time token approval while native ETH does not.
-- Many bridges move native ETH, and the destination may deliver ETH or WETH depending on the route.
-- On Polygon PoS, bridged ETH arrives as WETH.
-- Gas is paid in the native token of the chain the user signs on, not in WETH.
-- Native withdrawals from optimistic rollups back to Ethereum take about 7 days, while fast bridges are quicker for a fee.
-
-## Pages
-
-- WETH Bridge & learn: https://bridge-weth.github.io/
-- Legal: https://bridge-weth.github.io/legal.html
+Use a WETH Bridge to move Wrapped Ether (WETH) between Ethereum and other networks. See the route, fee and time before you sign, and keep your own keys.
